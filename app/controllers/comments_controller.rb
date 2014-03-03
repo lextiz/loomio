@@ -15,11 +15,14 @@ class CommentsController < BaseController
     else
       DiscussionService.unlike_comment(current_user, @comment)
     end
+    @discussion = @comment.discussion
 
     render :template => "comments/comment_likes"
   end
   
   def translate
+    raise NotImplementedError # (temporarily disable translation feature) 
+    
     @translation = @comment.translate @comment.author.primary_language, I18n.locale.to_s
     @success = @translation.present? && @translation != @comment.body
     

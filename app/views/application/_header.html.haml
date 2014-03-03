@@ -1,26 +1,24 @@
-.logged-in-navigation.js-campaign
-  - if user_signed_in?
-    = render 'campaigns/crowdfunding'
-    .navbar.navbar-inverse.navbar-fixed-top.js-campaign
-      .navbar-inner
-        .container
-          %ul.nav-bar-list.clearfix
-            %li.nav-item#logo-home
-              %a.nav-logo-link{:href => "/"}
-                = image_tag(navbar_logo_path, :alt => "Loomio")
+.toolbar-navigation.js-campaign
+  = render 'campaigns/crowdfunding'
+  .navbar.navbar-fixed-top.js-campaign
+    .navbar-inner
+      .container
+        %ul.nav-bar-list.clearfix
+          %li.nav-item#logo-home
+            %a.nav-logo-link{:href => "/"}
+              - if hide_beta_logo?
+                = image_tag('navbar-logo.png', :alt => "Loomio", class: 'loomio-logo')
+              - else
+                = image_tag('navbar-logo-beta.jpg', :alt => "Loomio", class: 'loomio-beta-logo')
+          - if user_signed_in?
             = render 'inbox'
             = render 'notifications_dropdown'
             = render 'application/groups_dropdown'
             = render 'user_dropdown'
-            - if navbar_contribute == "show"
-              = render 'contribute'
-            = render 'help_dropdown'
+            / - if navbar_contribute == "show"
+            /   = render 'contribute'
             = render 'search'
-  - else
-    .container#top
-      .inner-container
-        .row-fluid
-          =link_to image_tag("loomio-orange-header.png"), root_url
-          .pull-right
-            - unless controller_name == "group_requests"
-              =link_to t(:log_in), new_user_session_path, class: 'btn btn-info'
+          - else
+            %li.pull-right
+              - unless controller_name == "group_requests"
+                =link_to t(:log_in), new_user_session_path, class: 'btn btn-info'
