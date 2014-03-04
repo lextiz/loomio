@@ -118,6 +118,7 @@ a.btn-icon:hover { color: $dark-grey; }
 .pages.privacy,
 .pages.pricing,
 .pages.terms_of_service,
+.pages.third_parties,
 .pages.purpose,
 .pages.how_it_works,
 .pages.about_us,
@@ -407,6 +408,39 @@ body.pages.terms_of_service {
     font-size: 1.2em;
     li { line-height: 24px; }
   }
+}
+
+body.pages.privacy, body.pages.third_parties {
+  .container {
+    .subheader {
+      text-align: center;
+      font-weight: 400;
+      margin-bottom: 36px;
+      font-size: 28px;
+      line-height: 31px;
+      &#tagline {
+        font-size: 36px;
+        margin: 28px 0 10px;
+      }
+      &.bullet { margin-bottom: 6px; }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 50px;
+      line-height: 56px;
+      margin-bottom: 20px;
+      font-weight: 400;
+      &.smaller {
+        font-size: 42px;
+        line-height: 46px;
+        margin-bottom: 40px;
+      }
+      // span { font-weight: 400; }
+    }
+  }
+
+
 }
 
 .invitations.show, .registrations.create {
